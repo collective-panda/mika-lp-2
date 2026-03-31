@@ -7,137 +7,246 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Noto Sans JP', sans-serif; background-color: #fffafb; color: #4a4a4a; }
-        .hero-bg {
-            background-image: url('images/hero_bg.png');
-            background-size: cover;
-            background-position: center;
-            background-color: rgba(255, 255, 255, 0.8);
-            background-blend-mode: overlay;
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #fff5f7; color: #333; overflow-x: hidden; }
+        
+        /* ヒーロー動画背景 */
+        .hero-video-wrapper {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: -2;
         }
-        .section-title { color: #d9777f; border-bottom: 3px solid #fecdd3; padding-bottom: 8px; margin-bottom: 32px; display: inline-block; }
-        .card-shadow { box-shadow: 0 4px 20px rgba(217, 119, 127, 0.1); }
+        .hero-video-wrapper video {
+            min-w-full; min-h-full; object-fit: cover;
+            width: 100vw; height: 100vh;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.6); /* 少し白を乗せてテキストを読みやすく */
+            z-index: -1;
+        }
+
+        /* 売り込み強めの装飾 */
+        .emphasis-red { color: #e11d48; font-weight: 900; }
+        .emphasis-yellow { background: linear-gradient(transparent 60%, #fde047 60%); }
+        .shadow-strong { box-shadow: 0 10px 30px rgba(225, 29, 72, 0.2); }
+        .btn-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(225, 29, 72, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+        }
+        .ribbon {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: #e11d48; color: white; padding: 5px 20px; font-weight: bold;
+            border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            white-space: nowrap; z-index: 10;
+        }
+
+        .section-title {
+            position: relative; display: inline-block; padding: 0 40px;
+            font-size: 2rem; font-weight: 900; color: #be185d; text-align: center; mb-12;
+        }
+        .section-title::before, .section-title::after {
+            content: '✨'; position: absolute; top: 50%; transform: translateY(-50%);
+        }
+        .section-title::before { left: 0; }
+        .section-title::after { right: 0; }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- ヒーローセクション -->
-    <header class="hero-bg min-h-[80vh] flex flex-col items-center justify-center text-center px-4 relative">
-        <div class="bg-white/90 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-xl max-w-4xl w-full border border-pink-100">
-            <h1 class="text-3xl md:text-5xl font-black leading-tight mb-6 text-gray-800">
-                おウチにいながら<br class="md:hidden">
-                <span class="text-[#d9777f]">アフィリエイトで収入と<br class="md:hidden">自由を手にしてみませんか</span>
+    <header class="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <div class="hero-video-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="assets/hero_bg.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <div class="bg-white/90 backdrop-blur-sm p-6 md:p-12 rounded-3xl shadow-2xl max-w-4xl w-full border-4 border-pink-300 relative z-10 mt-10">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black px-8 py-2 rounded-full shadow-lg text-lg w-11/12 md:w-auto">
+                あなたの個性を咲かせる・あなたビジネスを咲かせる
+            </div>
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mt-6 mb-6 text-gray-800 drop-shadow-sm">
+                おウチにいながら<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-pink-600 border-b-4 border-rose-400">アフィリエイトで</span><br>
+                <span class="text-rose-600 text-4xl md:text-6xl">収入と自由</span>を<br>
+                手にしてみませんか？
             </h1>
-            <p class="text-lg md:text-2xl font-bold text-gray-600 mb-8 tracking-wide">
-                あなたの個性を咲かせる講座<br>
-                あなたビジネスを咲かせる講座
+            <p class="text-lg md:text-xl font-bold text-gray-600 mb-10">
+                初心者からでも月収UPを目指せる！<br>Instagram×AIの最新ノウハウを大公開！
             </p>
-            <a href="#products" class="bg-gradient-to-r from-pink-400 to-[#d9777f] text-white px-10 py-5 rounded-full text-xl font-bold shadow-lg hover:scale-105 transition-transform inline-block">
-                講座の詳細を見る 👇
+            <a href="#products" class="bg-gradient-to-b from-rose-400 to-rose-600 text-white px-10 py-6 rounded-full text-2xl font-black shadow-strong btn-pulse inline-block w-full md:w-3/4 border-b-4 border-rose-800">
+                今すぐお得な講座をチェック 👇
             </a>
         </div>
     </header>
 
     <!-- こんな方にオススメ -->
-    <section class="py-20 px-4 bg-pink-50">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold text-center section-title w-full">こんな方にオススメ</h2>
-            <div class="bg-white p-8 rounded-2xl card-shadow">
-                <ul class="space-y-4 text-lg md:text-xl text-gray-700 font-medium">
-                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> 一人じゃ不安、誰かに頼りたい</li>
-                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> 自己流で結果が出なかった</li>
-                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> これで合ってるか不安</li>
-                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> 難しいのは苦手だけど稼ぎたい</li>
-                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> 相談しながら安心して進めたい</li>
-                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> Instagram収益化までの導線がわからない</li>
-                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> もう「わからない」で止まりたくない</li>
+    <section class="py-20 px-4 bg-pink-50 border-b-4 border-pink-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10"><h2 class="section-title">こんなお悩みありませんか？</h2></div>
+            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl border-2 border-pink-100 relative">
+                <div class="absolute -top-5 -left-5 text-6xl">💦</div>
+                <ul class="space-y-5 text-xl md:text-2xl font-bold text-gray-700">
+                    <li class="flex items-center"><span class="text-rose-500 text-3xl mr-4">☑️</span> 一人じゃ不安、誰かに頼りたい</li>
+                    <li class="flex items-center"><span class="text-rose-500 text-3xl mr-4">☑️</span> 自己流で結果が出なかった</li>
+                    <li class="flex items-center"><span class="text-rose-500 text-3xl mr-4">☑️</span> これで合ってるか不安</li>
+                    <li class="flex items-center"><span class="text-rose-500 text-3xl mr-4">☑️</span> 難しいのは苦手だけど<span class="emphasis-red mx-1">稼ぎたい！</span></li>
+                    <li class="flex items-center"><span class="text-rose-500 text-3xl mr-4">☑️</span> 相談しながら安心して進めたい</li>
+                    <li class="flex items-center"><span class="text-rose-500 text-3xl mr-4">☑️</span> Instagram収益化の導線がわからない</li>
+                    <li class="flex items-center"><span class="text-rose-500 text-3xl mr-4">☑️</span> もう<span class="emphasis-red mx-1">「わからない」</span>で止まりたくない！</li>
                 </ul>
+                <div class="mt-10 text-center bg-rose-100 py-4 rounded-xl">
+                    <p class="text-2xl font-black text-rose-600">そのお悩み、この講座で<br class="md:hidden">すべて解決します！🚀</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 講師紹介 -->
-    <section class="py-20 px-4 bg-white">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-bold section-title">講師紹介</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mt-8">
-                <!-- 講師1〜6ループ -->
-                <script>
-                    for(let i=1; i<=6; i++) {
-                        document.write(`
-                            <div class="bg-pink-50 rounded-xl p-6 card-shadow border border-pink-100">
-                                <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center text-gray-400 font-bold border-4 border-white shadow-sm">写真枠 ${i}</div>
-                                <h3 class="text-xl font-bold mb-2 text-gray-800">講師のお名前 ${i}</h3>
-                                <p class="text-sm text-gray-600">簡単なプロフィール文がここに入ります。経歴や実績などを記載予定です。</p>
-                            </div>
-                        `);
-                    }
-                </script>
+    <section class="py-24 px-4 bg-white relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16"><h2 class="section-title">超豪華！強力な講師陣が徹底サポート</h2></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 講師1 -->
+                <div class="bg-pink-50 rounded-2xl p-6 shadow-lg border-2 border-pink-200 text-center transform hover:-translate-y-2 transition duration-300">
+                    <img src="assets/講師1.jpg" alt="美香" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-black text-rose-600 mb-1">マネーアドバイザー</h3>
+                    <h4 class="text-2xl font-black text-gray-800 mb-4 border-b-2 border-pink-200 pb-2">美香</h4>
+                    <p class="text-sm text-gray-600 font-bold leading-relaxed text-left">お金のアドバイスならお任せ！おウチにいながら収入を増やすためのマインドとノウハウを丁寧にお伝えします。</p>
+                </div>
+                <!-- 講師2 -->
+                <div class="bg-pink-50 rounded-2xl p-6 shadow-lg border-2 border-pink-200 text-center transform hover:-translate-y-2 transition duration-300">
+                    <img src="assets/講師2.jpg" alt="ちままラボ" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-black text-rose-600 mb-1">でざいんラボ主宰</h3>
+                    <h4 class="text-2xl font-black text-gray-800 mb-4 border-b-2 border-pink-200 pb-2">ちままラボ</h4>
+                    <ul class="text-sm text-gray-600 font-bold leading-relaxed text-left list-disc pl-4">
+                        <li>納品実績1000枚以上</li>
+                        <li>Canvaを1から学べるオンラインサロン</li>
+                        <li>4人のママでも在宅ワークを叶える</li>
+                    </ul>
+                </div>
+                <!-- 講師3 -->
+                <div class="bg-pink-50 rounded-2xl p-6 shadow-lg border-2 border-pink-200 text-center transform hover:-translate-y-2 transition duration-300">
+                    <img src="assets/講師3.jpg" alt="まめ" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-black text-rose-600 mb-1">アフィリエイト講師</h3>
+                    <h4 class="text-2xl font-black text-gray-800 mb-4 border-b-2 border-pink-200 pb-2">まめ</h4>
+                    <ul class="text-sm text-gray-600 font-bold leading-relaxed text-left list-disc pl-4">
+                        <li>Instagram 8万フォロワー</li>
+                        <li>ママでも我慢のしない生き方</li>
+                        <li>現在：香川県にて民泊経営</li>
+                    </ul>
+                </div>
+                <!-- 講師4 -->
+                <div class="bg-pink-50 rounded-2xl p-6 shadow-lg border-2 border-pink-200 text-center transform hover:-translate-y-2 transition duration-300">
+                    <img src="assets/講師4.jpg" alt="村上良之" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-black text-rose-600 mb-1">AI✖️LPデザイナー</h3>
+                    <h4 class="text-2xl font-black text-gray-800 mb-4 border-b-2 border-pink-200 pb-2">村上良之</h4>
+                    <p class="text-sm text-gray-600 font-bold leading-relaxed text-left">古事記project（株）代表。AIインフラ開発、NFT流通世界4位、個人法人向けAIセミナー開催など多岐にわたり活躍。</p>
+                </div>
+                <!-- 講師5 -->
+                <div class="bg-pink-50 rounded-2xl p-6 shadow-lg border-2 border-pink-200 text-center transform hover:-translate-y-2 transition duration-300">
+                    <img src="assets/講師5.jpg" alt="リアン" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-black text-rose-600 mb-1">マインド担当</h3>
+                    <h4 class="text-2xl font-black text-gray-800 mb-4 border-b-2 border-pink-200 pb-2">リアン</h4>
+                    <p class="text-sm text-gray-600 font-bold leading-relaxed text-left">お金に対するマインドブロックを外し、成果を出すための「マインドセット講座」を担当します。</p>
+                </div>
+                <!-- 講師6 -->
+                <div class="bg-pink-50 rounded-2xl p-6 shadow-lg border-2 border-pink-200 text-center transform hover:-translate-y-2 transition duration-300">
+                    <img src="assets/講師6.jpg" alt="ジュネット" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md">
+                    <h3 class="text-xl font-black text-rose-600 mb-1">寄り添いコーチ</h3>
+                    <h4 class="text-2xl font-black text-gray-800 mb-4 border-b-2 border-pink-200 pb-2">ジュネット</h4>
+                    <p class="text-sm text-gray-600 font-bold leading-relaxed text-left">講座中のお悩みやおはなしを聞いて欲しいことのバックアップ。わからないスマホ作業についても徹底サポート！</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 講座の詳細 -->
-    <section class="py-20 px-4 bg-gradient-to-b from-pink-50 to-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center section-title w-full">講座の詳細</h2>
+    <section class="py-24 px-4 bg-rose-50 border-y-4 border-rose-200">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16"><h2 class="section-title">講座の詳細スケジュール</h2></div>
             
             <div class="grid md:grid-cols-2 gap-10">
                 <!-- 内容 -->
-                <div class="bg-white p-8 rounded-2xl card-shadow border-t-4 border-pink-400">
-                    <h3 class="text-2xl font-bold text-pink-500 mb-6 text-center border-b pb-2">＜内容＞</h3>
-                    <ul class="space-y-3 text-gray-700 font-medium">
-                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">アフェリエイトの種類と仕組み</li>
-                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">アフェリエイト取得方法</li>
-                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">InstagramやAIの基本的な使い方</li>
-                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">おウチで販売できるものを作ろう</li>
-                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">作業会グループあり</li>
-                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">個別コンサルあり</li>
+                <div class="bg-white p-8 rounded-3xl shadow-xl border-t-8 border-rose-500 relative">
+                    <h3 class="text-3xl font-black text-rose-600 mb-8 text-center border-b-2 border-gray-100 pb-4">＜学べる内容＞</h3>
+                    <ul class="space-y-4 text-gray-800 font-bold text-lg">
+                        <li class="flex items-center"><span class="bg-rose-100 text-rose-600 p-2 rounded-full mr-3 text-sm">✓</span> アフェリエイトの種類と仕組み</li>
+                        <li class="flex items-center"><span class="bg-rose-100 text-rose-600 p-2 rounded-full mr-3 text-sm">✓</span> アフェリエイト取得方法</li>
+                        <li class="flex items-center"><span class="bg-rose-100 text-rose-600 p-2 rounded-full mr-3 text-sm">✓</span> InstagramやAIの基本的な使い方</li>
+                        <li class="flex items-center"><span class="bg-rose-100 text-rose-600 p-2 rounded-full mr-3 text-sm">✓</span> おウチで販売できるものを作ろう</li>
+                        <li class="flex items-center"><span class="bg-rose-100 text-rose-600 p-2 rounded-full mr-3 text-sm">✓</span> 仲間と頑張れる作業会グループ</li>
+                        <li class="flex items-center"><span class="bg-rose-100 text-rose-600 p-2 rounded-full mr-3 text-sm">✓</span> 迷わないための個別コンサル</li>
                     </ul>
                 </div>
 
                 <!-- 日程 -->
-                <div class="bg-white p-8 rounded-2xl card-shadow border-t-4 border-pink-400">
-                    <h3 class="text-2xl font-bold text-pink-500 mb-6 text-center border-b pb-2">＜日程＞</h3>
-                    <div class="grid grid-cols-2 gap-2 text-gray-700 font-bold text-lg mb-6">
-                        <div>４月１７日</div><div>４月１９日</div>
-                        <div>４月２５日</div><div>４月３０日</div>
-                        <div>５月　８日</div><div>５月１２日</div>
-                        <div>５月１７日</div><div>５月２２日</div>
-                        <div>５月３１日</div><div>６月　９日</div>
-                        <div>６月１５日</div><div>６月２１日</div>
+                <div class="bg-white p-8 rounded-3xl shadow-xl border-t-8 border-rose-500 relative">
+                    <h3 class="text-3xl font-black text-rose-600 mb-8 text-center border-b-2 border-gray-100 pb-4">＜開催日程＞</h3>
+                    <div class="grid grid-cols-2 gap-3 text-gray-800 font-black text-xl mb-8 text-center">
+                        <div class="bg-gray-50 py-2 rounded">4月17日</div><div class="bg-gray-50 py-2 rounded">4月19日</div>
+                        <div class="bg-gray-50 py-2 rounded">4月25日</div><div class="bg-gray-50 py-2 rounded">4月30日</div>
+                        <div class="bg-gray-50 py-2 rounded">5月 8日</div><div class="bg-gray-50 py-2 rounded">5月12日</div>
+                        <div class="bg-gray-50 py-2 rounded">5月17日</div><div class="bg-gray-50 py-2 rounded">5月22日</div>
+                        <div class="bg-gray-50 py-2 rounded">5月31日</div><div class="bg-gray-50 py-2 rounded">6月 9日</div>
+                        <div class="bg-gray-50 py-2 rounded">6月15日</div><div class="bg-gray-50 py-2 rounded">6月21日</div>
                     </div>
-                    <div class="bg-pink-50 p-4 rounded-lg text-sm text-gray-600 font-medium space-y-1 border border-pink-100">
-                        <p>※アーカイブあり　PM９：００スタート</p>
-                        <p>※個別作業会は日中でも対応可能</p>
-                        <p>※オンライン上でのマルシェ出店あり</p>
+                    <div class="bg-rose-100 p-4 rounded-xl text-rose-800 font-bold text-center space-y-2 border-2 border-rose-200">
+                        <p class="text-lg">📺 全日程 アーカイブ配信あり！</p>
+                        <p>PM 9：00 スタート</p>
+                        <p class="text-sm mt-2">※個別作業会は日中でも対応可能！<br>※オンライン上でのマルシェ出店あり！</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 5つの特典 -->
-            <div class="mt-12 bg-[#ffe4e6] p-8 rounded-3xl card-shadow border-4 border-white">
-                <h3 class="text-2xl md:text-3xl font-black text-pink-600 mb-8 text-center bg-white py-3 rounded-full shadow-sm">🎁 手厚い５つの特典 🎁</h3>
-                <div class="space-y-4">
-                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
-                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">①</div>
-                        <p class="font-bold text-gray-700">CANVA２ヶ月間<br>質問や指導受け放題 / ちままラボへご招待</p>
+            <!-- ガツンと売り込む！5つの特典 -->
+            <div class="mt-16 bg-gradient-to-br from-rose-500 to-red-600 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden text-white border-8 border-yellow-300">
+                <div class="ribbon text-xl py-2 px-8 bg-yellow-400 text-red-700 shadow-xl border-2 border-yellow-200">絶対に見逃せない！！！</div>
+                <h3 class="text-3xl md:text-5xl font-black text-yellow-300 mb-10 text-center drop-shadow-md">
+                    🎁 圧倒的にお得な<br class="md:hidden">「手厚い５つの特典」 🎁
+                </h3>
+                <p class="text-center text-xl font-bold mb-8 bg-white/20 py-2 rounded-lg">これだけでも元が取れるレベルの超豪華サポート！</p>
+                
+                <div class="space-y-4 text-gray-900">
+                    <div class="bg-white p-6 rounded-2xl flex flex-col md:flex-row items-center shadow-lg border-b-4 border-gray-200 transform hover:scale-105 transition">
+                        <div class="text-5xl font-black text-rose-500 mr-0 md:mr-6 mb-4 md:mb-0 drop-shadow">①</div>
+                        <div class="text-center md:text-left">
+                            <p class="text-2xl font-black text-red-600 mb-1">CANVA ２ヶ月間 質問・指導受け放題！</p>
+                            <p class="font-bold text-gray-600">デザインのプロ「ちままラボ」へ特別ご招待！プロの技を盗み放題！</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
-                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">②</div>
-                        <p class="font-bold text-gray-700">個別カウセリング<br>あなたが売れる商品を一緒に考え一緒に作る</p>
+                    <div class="bg-white p-6 rounded-2xl flex flex-col md:flex-row items-center shadow-lg border-b-4 border-gray-200 transform hover:scale-105 transition">
+                        <div class="text-5xl font-black text-rose-500 mr-0 md:mr-6 mb-4 md:mb-0 drop-shadow">②</div>
+                        <div class="text-center md:text-left">
+                            <p class="text-2xl font-black text-red-600 mb-1">売れる商品を一緒に作る！個別カウンセリング</p>
+                            <p class="font-bold text-gray-600">一人で悩ませません！あなたが確実に売れる商品をプロと一緒に構築！</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
-                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">③</div>
-                        <p class="font-bold text-gray-700">すぐに売れる<br>販売導線ＬＰやお申し込みツール制作 ８０％off</p>
+                    <div class="bg-white p-6 rounded-2xl flex flex-col md:flex-row items-center shadow-lg border-b-4 border-gray-200 transform hover:scale-105 transition">
+                        <div class="text-5xl font-black text-rose-500 mr-0 md:mr-6 mb-4 md:mb-0 drop-shadow">③</div>
+                        <div class="text-center md:text-left">
+                            <p class="text-2xl font-black text-red-600 mb-1">販売導線LP・お申し込みツール制作 <span class="text-4xl">80%OFF!</span></p>
+                            <p class="font-bold text-gray-600">すぐに売上を立てるための「最強の武器（LP）」を破格で提供！</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
-                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">④</div>
-                        <p class="font-bold text-gray-700">インフルエンサーによる写真や投稿に必要なおはなしを無料で聞ける</p>
+                    <div class="bg-white p-6 rounded-2xl flex flex-col md:flex-row items-center shadow-lg border-b-4 border-gray-200 transform hover:scale-105 transition">
+                        <div class="text-5xl font-black text-rose-500 mr-0 md:mr-6 mb-4 md:mb-0 drop-shadow">④</div>
+                        <div class="text-center md:text-left">
+                            <p class="text-2xl font-black text-red-600 mb-1">インフルエンサー直伝！特別講義が無料！</p>
+                            <p class="font-bold text-gray-600">写真の撮り方、伸びる投稿の秘訣を現役インフルエンサーからタダで聞ける！</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
-                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">⑤</div>
-                        <p class="font-bold text-gray-700">講座中３ヶ月間<br>個別LINEにて質問し放題</p>
+                    <div class="bg-white p-6 rounded-2xl flex flex-col md:flex-row items-center shadow-lg border-b-4 border-gray-200 transform hover:scale-105 transition">
+                        <div class="text-5xl font-black text-rose-500 mr-0 md:mr-6 mb-4 md:mb-0 drop-shadow">⑤</div>
+                        <div class="text-center md:text-left">
+                            <p class="text-2xl font-black text-red-600 mb-1">講座期間中(3ヶ月間) 個別LINEで質問し放題！</p>
+                            <p class="font-bold text-gray-600">つまづいた時はいつでも質問OK！「わからない」で絶対に止まらせません！</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -146,15 +255,16 @@
 
     <!-- お客様の声 -->
     <section class="py-20 px-4 bg-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold section-title">お客様の声</h2>
-            <div class="grid grid-cols-2 gap-4 md:gap-6 mt-8">
-                <!-- 13枚の画像枠ループ -->
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="text-center mb-16"><h2 class="section-title">喜びの声が続々届いています！</h2></div>
+            <div class="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 mt-8">
+                <!-- 14枚の画像をループ表示 -->
                 <script>
-                    for(let i=1; i<=13; i++) {
+                    for(let i=1; i<=14; i++) {
+                        let num = i.toString().padStart(3, '0'); // 001, 002...
                         document.write(`
-                            <div class="bg-gray-100 h-40 md:h-64 rounded-xl flex items-center justify-center text-gray-400 font-bold border-2 border-dashed border-gray-300">
-                                お客様の声<br>写真枠 ${i}
+                            <div class="rounded-xl overflow-hidden shadow-lg border-2 border-gray-100 hover:scale-105 transition-transform duration-300">
+                                <img src="assets/${num}.jpg" alt="お客様の声 ${num}" class="w-full h-auto object-cover" loading="lazy" onerror="this.src='https://placehold.co/600x400/ffe4e6/be185d?text=Voice+${num}'">
                             </div>
                         `);
                     }
@@ -163,71 +273,158 @@
         </div>
     </section>
 
-    <!-- 商品内容３種 -->
-    <section id="products" class="py-24 px-4 bg-pink-50 relative">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-4xl font-black text-center mb-16 text-gray-800 w-full tracking-wide">商品プランのご案内</h2>
+    <!-- 商品プラン（ガツンと売る！） -->
+    <section id="products" class="py-24 px-4 bg-gray-900 relative border-t-8 border-yellow-400">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16 text-white w-full tracking-wide">
+                <span class="text-yellow-400">本気で人生を変える</span><br class="md:hidden">商品プラン
+            </h2>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8 items-end">
                 <!-- Aプラン -->
-                <div class="bg-white rounded-3xl p-8 card-shadow flex flex-col items-center text-center border-t-8 border-gray-300">
-                    <h3 class="text-3xl font-black text-gray-700 mb-2">＜A＞</h3>
-                    <p class="text-xl font-bold text-gray-600 h-20 flex items-center justify-center border-b w-full pb-4">８つのAIアプリ入門講座</p>
-                    <div class="py-8 flex-grow">
-                        <p class="text-gray-500 mb-2">単品価格</p>
+                <div class="bg-white rounded-3xl p-8 shadow-xl flex flex-col items-center text-center border-t-8 border-gray-300 transform md:scale-95">
+                    <h3 class="text-3xl font-black text-gray-700 mb-2">＜プラン A＞</h3>
+                    <p class="text-2xl font-black text-rose-600 border-b-2 border-gray-100 w-full pb-4">８つのAIアプリ<br>入門講座</p>
+                    <div class="my-6 w-full h-40 overflow-hidden rounded-xl">
+                        <img src="assets/plan_a.jpg" alt="Aコース" class="w-full h-full object-cover">
+                    </div>
+                    <div class="py-4 flex-grow">
+                        <p class="text-gray-500 font-bold mb-1">単品価格</p>
                         <p class="text-4xl font-black text-gray-800">39,800<span class="text-xl">円</span></p>
                     </div>
-                    <a href="form.html" class="w-full py-4 bg-gray-200 text-gray-700 font-bold rounded-full hover:bg-gray-300 transition">申し込む</a>
+                    <label class="w-full mb-4 bg-gray-100 p-4 rounded-xl cursor-pointer hover:bg-gray-200 border-2 border-transparent focus-within:border-rose-500">
+                        <input type="radio" name="course_select" value="A" class="course-radio w-5 h-5 text-rose-600 align-middle">
+                        <span class="font-bold text-lg ml-2 align-middle">Aプランを選択</span>
+                    </label>
                 </div>
 
-                <!-- Bプラン -->
-                <div class="bg-white rounded-3xl p-8 card-shadow flex flex-col items-center text-center border-t-8 border-pink-400 transform md:-translate-y-4 relative">
-                    <div class="absolute -top-5 bg-pink-500 text-white px-6 py-2 rounded-full font-bold text-sm tracking-widest shadow-md">一番人気</div>
-                    <h3 class="text-3xl font-black text-pink-600 mb-2">＜B＞</h3>
-                    <p class="text-xl font-bold text-pink-600 h-20 flex items-center justify-center border-b w-full pb-4 border-pink-100">本講座（すべて込み）</p>
-                    <div class="py-6 flex-grow text-sm font-medium text-gray-600 space-y-2">
-                        <p class="text-pink-500 font-bold bg-pink-50 py-1 rounded">AのAIアプリ講座<br>（39,800円）</p>
-                        <p class="text-pink-500 font-bold bg-pink-50 py-1 rounded">２ヶ月CANVAラボ<br>（6,000円）</p>
-                        <p class="pt-2">もコミコミのお得なセット！</p>
+                <!-- Bプラン (一番人気強調) -->
+                <div class="bg-white rounded-3xl p-8 shadow-2xl flex flex-col items-center text-center border-4 border-rose-500 relative z-10">
+                    <div class="absolute -top-6 bg-red-600 text-white px-8 py-2 rounded-full font-black text-lg tracking-widest shadow-lg animate-bounce">👑 圧倒的一番人気！ 👑</div>
+                    <h3 class="text-4xl font-black text-rose-600 mb-2 mt-4">＜プラン B＞</h3>
+                    <p class="text-3xl font-black text-gray-800 border-b-4 border-rose-100 w-full pb-4">本講座<br><span class="text-lg text-rose-500">（すべて込み）</span></p>
+                    
+                    <div class="py-6 flex-grow text-base font-black text-gray-700 space-y-3 w-full">
+                        <div class="bg-rose-50 border border-rose-200 p-3 rounded-lg flex items-center justify-center">
+                            <span class="text-red-500 mr-2 text-xl">🎁</span> AのAIアプリ講座<br>(39,800円相当) 込み！
+                        </div>
+                        <div class="bg-rose-50 border border-rose-200 p-3 rounded-lg flex items-center justify-center">
+                            <span class="text-red-500 mr-2 text-xl">🎁</span> ２ヶ月CANVAラボ<br>(6,000円相当) 込み！
+                        </div>
+                        <p class="text-rose-600 text-xl pt-2">超豪華なコミコミセット！</p>
                     </div>
-                    <div class="pb-6">
-                        <p class="text-gray-500 mb-1">特別価格</p>
-                        <p class="text-5xl font-black text-pink-500">80,000<span class="text-2xl">円</span></p>
+                    
+                    <div class="pb-6 w-full bg-yellow-50 rounded-xl p-4 border-2 border-yellow-200 mb-6">
+                        <p class="text-red-600 font-bold mb-1 line-through">本来ならもっと高額ですが…</p>
+                        <p class="text-gray-600 font-bold mb-1">特別価格</p>
+                        <p class="text-6xl font-black text-red-600">80,000<span class="text-2xl">円</span></p>
                     </div>
-                    <a href="form.html" class="w-full py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white font-bold rounded-full hover:scale-105 transition shadow-lg text-lg">申し込む</a>
+                    <label class="w-full bg-rose-100 p-4 rounded-xl cursor-pointer hover:bg-rose-200 border-2 border-rose-500 shadow-md">
+                        <input type="radio" name="course_select" value="B" class="course-radio w-6 h-6 text-rose-600 align-middle" checked>
+                        <span class="font-black text-xl text-rose-700 ml-2 align-middle">Bプランを選択</span>
+                    </label>
                 </div>
 
-                <!-- Cプラン -->
-                <div class="bg-gradient-to-b from-gray-900 to-gray-800 rounded-3xl p-8 card-shadow flex flex-col items-center text-center border-t-8 border-yellow-400 text-white">
-                    <h3 class="text-3xl font-black text-yellow-400 mb-2">＜C＞</h3>
-                    <p class="text-sm font-bold text-gray-300 border-b border-gray-700 w-full pb-4">
-                        ＼もう“作れない”で止まらない／<br>
-                        <span class="text-lg text-white mt-1 block">販売導線まるごと<br>プロにお任せプラン</span>
-                    </p>
-                    <div class="py-6 flex-grow text-left w-full space-y-2 text-sm text-gray-300">
-                        <p>✔ 専用LP制作</p>
-                        <p>✔ お申し込みフォーム作成</p>
-                        <p>✔ 販売導線づくり</p>
+                <!-- Cプラン (アップセル) -->
+                <div class="bg-gradient-to-b from-gray-800 to-black rounded-3xl p-8 shadow-xl flex flex-col items-center text-center border-t-8 border-yellow-400 text-white transform md:scale-95 relative">
+                    <div class="absolute -top-5 bg-yellow-500 text-black px-6 py-1 rounded-full font-bold text-sm shadow-md">本気で売るならコレ！</div>
+                    <h3 class="text-3xl font-black text-yellow-400 mb-2 mt-2">＜プラン C＞</h3>
+                    <div class="w-full border-b border-gray-600 pb-4">
+                        <p class="text-sm font-bold text-gray-300 emphasis-yellow text-black inline-block px-2">＼もう“作れない”で止まらない／</p>
+                        <p class="text-xl font-black text-white mt-2">販売導線まるごと<br>プロにお任せプラン</p>
                     </div>
-                    <div class="pb-6 w-full relative">
-                        <p class="text-gray-400 text-sm line-through">👉 通常 300,000円のところ</p>
-                        <p class="text-xs text-yellow-400 font-bold mt-2">👇 講座受講者限定８０％オフ✨</p>
-                        <p class="text-5xl font-black text-yellow-400 mt-1">60,000<span class="text-2xl">円</span></p>
+                    
+                    <div class="py-6 flex-grow text-left w-full space-y-3 text-base font-bold text-gray-200 bg-white/5 p-4 rounded-xl mt-4">
+                        <p class="flex items-center"><span class="text-yellow-400 mr-2">✔</span> 専用LP制作</p>
+                        <p class="flex items-center"><span class="text-yellow-400 mr-2">✔</span> お申し込みフォーム作成</p>
+                        <p class="flex items-center"><span class="text-yellow-400 mr-2">✔</span> 販売導線づくり</p>
                     </div>
-                    <a href="form.html" class="w-full py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-gray-900 font-black rounded-full hover:scale-105 transition shadow-lg text-lg">特別価格で申し込む</a>
+                    
+                    <div class="pb-6 w-full relative mt-4">
+                        <p class="text-gray-400 text-sm font-bold">👉 通常 <span class="line-through">300,000円</span>のところ</p>
+                        <p class="text-lg text-yellow-400 font-black mt-2 bg-red-600/30 py-1 rounded">👇 講座受講者限定 80％オフ✨</p>
+                        <p class="text-5xl font-black text-yellow-400 mt-2">60,000<span class="text-2xl">円</span></p>
+                    </div>
+                    
+                    <div class="w-full text-left bg-gray-800 p-4 rounded-xl border border-gray-600">
+                        <p class="text-sm text-gray-300 font-bold mb-2">※Cプランは追加オプションです</p>
+                        <label class="block cursor-pointer hover:bg-gray-700 p-2 rounded transition">
+                            <input type="checkbox" id="option_c" name="option_c" value="C" class="w-5 h-5 text-yellow-500 align-middle">
+                            <span class="font-bold text-yellow-400 ml-2 align-middle">Cプランも追加する！</span>
+                        </label>
+                    </div>
                 </div>
+            </div>
+
+            <!-- お申し込みボタンへスクロール -->
+            <div class="mt-16 text-center">
+                <button onclick="document.getElementById('apply-form-section').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-b from-red-500 to-red-700 text-white px-12 py-6 rounded-full text-3xl font-black shadow-strong btn-pulse border-b-4 border-red-900 inline-block">
+                    選択したプランで申し込む！ ＞
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- マネー占いミニゲーム -->
-    <section class="py-16 px-4 bg-white text-center border-t border-gray-100">
-        <h2 class="text-2xl font-bold text-gray-700 mb-6">🔮 今日のマネー占い 🔮</h2>
-        <p class="text-sm text-gray-500 mb-6">アフィリエイトを始める前の運試し！コインをタップしてね。</p>
-        <button onclick="playFortune()" class="bg-yellow-400 text-white text-5xl p-6 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-transform border-4 border-yellow-200">
+    <!-- 申し込みフォーム埋め込みセクション -->
+    <section id="apply-form-section" class="py-24 px-4 bg-white relative">
+        <div class="max-w-3xl mx-auto bg-pink-50 p-8 md:p-12 rounded-3xl shadow-xl border-4 border-pink-200">
+            <h2 class="text-3xl font-black text-center mb-8 text-rose-600 border-b-2 border-pink-200 pb-4">お申し込みフォーム</h2>
+            
+            <form action="form.html" method="GET" class="space-y-6">
+                <!-- プラン確認用（見た目だけ、実際の処理はJSか別ページで） -->
+                <div class="bg-white p-4 rounded-xl border-2 border-rose-100 mb-8">
+                    <p class="text-sm text-gray-500 font-bold mb-1">選択中のプラン</p>
+                    <p id="selected-plan-display" class="text-xl font-black text-rose-600">プラン B（本講座）</p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">お名前 <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="text" required class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-rose-400 outline-none text-lg bg-white" placeholder="山田 花子">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">メールアドレス <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-2">必須</span></label>
+                    <input type="email" required class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-rose-400 outline-none text-lg bg-white" placeholder="example@email.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-3">性別 <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded ml-2">必須</span></label>
+                    <div class="flex space-x-6 bg-white p-4 border-2 border-gray-200 rounded-xl">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="gender" value="female" required class="w-6 h-6 text-rose-500">
+                            <span class="ml-2 font-bold text-lg text-gray-700">女性</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="gender" value="male" class="w-6 h-6 text-blue-500">
+                            <span class="ml-2 font-bold text-lg text-gray-700">男性</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pt-8">
+                    <button type="submit" class="w-full bg-gradient-to-b from-rose-500 to-rose-700 text-white py-6 rounded-full font-black text-2xl shadow-strong hover:scale-105 transition-transform border-b-4 border-rose-900">
+                        今すぐ申し込む！
+                    </button>
+                    <p class="text-center text-sm text-gray-500 font-bold mt-4">※送信後、詳細なご案内メールが届きます。</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 巨大Instagramリンク -->
+    <section class="py-16 px-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-center">
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-6 drop-shadow-md">最新情報はInstagramで発信中！</h2>
+        <a href="https://instagram.com/mama.mika.mama" target="_blank" class="inline-block bg-white text-pink-600 px-12 py-6 rounded-full text-3xl md:text-5xl font-black shadow-2xl hover:scale-110 transition-transform">
+            📷 @mama.mika.mama
+        </a>
+    </section>
+
+    <!-- マネー占い -->
+    <section class="py-16 px-4 bg-white text-center border-t border-gray-200">
+        <h2 class="text-3xl font-black text-gray-800 mb-6">🔮 今日のマネー占い 🔮</h2>
+        <p class="text-lg font-bold text-gray-500 mb-8">アフィリエイトを始める前の運試し！下のコインをタップ！</p>
+        <button onclick="playFortune()" class="bg-yellow-400 text-white text-7xl p-8 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-transform border-4 border-yellow-200">
             💰
         </button>
-        <div id="fortuneResult" class="mt-8 text-2xl font-black text-pink-600 min-h-[40px]"></div>
+        <div id="fortuneResult" class="mt-8 text-3xl font-black text-rose-600 min-h-[50px]"></div>
         
         <script>
             function playFortune() {
@@ -239,12 +436,10 @@
                     "吉🍀：周りの人に助けられる日。サポート環境を活用しよう！"
                 ];
                 const r = results[Math.floor(Math.random() * results.length)];
-                
                 const resultDiv = document.getElementById("fortuneResult");
                 resultDiv.style.opacity = 0;
                 resultDiv.innerText = "占っています...";
                 resultDiv.style.opacity = 1;
-                
                 setTimeout(() => {
                     resultDiv.style.transform = "scale(1.1)";
                     resultDiv.innerText = r;
@@ -255,18 +450,37 @@
     </section>
 
     <!-- フッター・特商法 -->
-    <footer class="bg-gray-100 py-10 text-center text-gray-500 text-sm">
-        <div class="flex justify-center space-x-6 mb-6">
-            <a href="https://instagram.com/mama.mika.mama" target="_blank" class="font-bold text-pink-500 hover:underline flex items-center">
-                <span class="mr-1">📷</span> Instagram: @mama.mika.mama
-            </a>
+    <footer class="bg-gray-900 py-12 text-center text-gray-400 text-sm">
+        <div class="space-x-6 mb-8 text-lg font-bold">
+            <a href="tokushoho.html" class="hover:text-white transition underline">特定商取引法に基づく表記</a>
+            <span class="text-gray-600">|</span>
+            <a href="privacy.html" class="hover:text-white transition underline">プライバシーポリシー</a>
         </div>
-        <div class="space-x-4 mb-6">
-            <a href="#" class="hover:underline">特定商取引法に基づく表記</a>
-            <a href="#" class="hover:underline">プライバシーポリシー</a>
-        </div>
-        <p>&copy; 2026 アフィリエイト講座 All Rights Reserved.</p>
+        <p class="text-gray-500">&copy; 2026 アフィリエイト講座 All Rights Reserved.</p>
     </footer>
 
+    <!-- プラン選択のJS連携 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const radios = document.querySelectorAll('.course-radio');
+            const optionC = document.getElementById('option_c');
+            const display = document.getElementById('selected-plan-display');
+
+            function updateDisplay() {
+                let selectedRadio = document.querySelector('.course-radio:checked').value;
+                let text = selectedRadio === 'A' ? 'プラン A（AIアプリ講座）' : 'プラン B（本講座）';
+                if(optionC.checked) {
+                    text += ' ＋ プラン C（販売導線お任せ）';
+                }
+                display.innerText = text;
+            }
+
+            radios.forEach(r => r.addEventListener('change', updateDisplay));
+            optionC.addEventListener('change', updateDisplay);
+            
+            // 初回実行
+            updateDisplay();
+        });
+    </script>
 </body>
 </html>
