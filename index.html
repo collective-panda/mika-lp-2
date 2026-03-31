@@ -288,236 +288,99 @@
             <div class="text-center mb-16"><h2 class="section-title">喜びの声が続々届いています！</h2></div>
             <div class="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 mt-8">
                 <!-- 14枚の画像をループ表示 -->
-                <script>
-                    for(let i=1; i<=14; i++) {
-                        let num = i.toString().padStart(3, '0'); // 001, 002...
-                        document.write(`
-                            <div class="rounded-xl overflow-hidden shadow-lg border-2 border-gray-100 hover:scale-105 transition-transform duration-300">
-                                <img src="assets/${num}.jpg" alt="お客様の声 ${num}" class="w-full h-auto object-cover" loading="lazy" onerror="this.src='https://placehold.co/600x400/ffe4e6/be185d?text=Voice+${num}'">
-                            </div>
-                        `);
-                    }
-                </script>
-            </div>
-        </div>
-    </section>
-
-    <!-- 商品プラン（ガツンと売る！） -->
-    <section id="products" class="py-24 px-4 bg-[#FAEDE5] relative border-t-8 border-yellow-400">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-black text-center mb-16 text-white w-full tracking-wide">
-                <span class="text-yellow-400">本気で人生を変える</span><br class="md:hidden">商品プラン
-            </h2>
-            
-            <div class="grid md:grid-cols-3 gap-8 items-end">
-                <!-- Aプラン -->
-                <div class="bg-white rounded-3xl p-8 shadow-xl flex flex-col items-center text-center border-t-8 border-gray-300 transform md:scale-95 h-full">
-                    <h3 class="text-3xl font-black text-gray-700 mb-2">＜プラン A＞</h3>
-                    <p class="text-2xl font-black text-[#C07049] border-b-2 border-gray-100 w-full pb-4">８つのAIアプリ<br>入門講座</p>
-                    <div class="my-6 w-full h-auto overflow-hidden rounded-xl">
-                        <img src="assets/plan_a.jpg" alt="Aコース" class="w-full h-auto object-contain">
-                    </div>
-                    <div class="py-4 flex-grow">
-                        <p class="text-gray-500 font-bold mb-1">単品価格</p>
-                        <p class="text-4xl font-black text-gray-800">39,800<span class="text-xl">円</span></p>
-                    </div>
-                    <label class="w-full mb-4 bg-gray-100 p-4 rounded-xl cursor-pointer hover:bg-gray-200 border-2 border-transparent focus-within:border-[#D98A59]">
-                        <input type="radio" name="course_select" value="A" class="course-radio w-5 h-5 text-[#C07049] align-middle">
-                        <span class="font-bold text-lg ml-2 align-middle">Aプランを選択</span>
-                    </label>
-                </div>
-
-                <!-- Bプラン (一番人気強調) -->
-                <div class="bg-white rounded-3xl p-8 shadow-2xl flex flex-col items-center text-center border-4 border-[#D98A59] relative z-10">
-                    <div class="absolute -top-6 bg-red-600 text-white px-8 py-2 rounded-full font-black text-lg tracking-widest shadow-lg animate-bounce">👑 圧倒的一番人気！ 👑</div>
-                    <h3 class="text-4xl font-black text-[#C07049] mb-2 mt-4">＜プラン B＞</h3>
-                    <p class="text-3xl font-black text-gray-800 border-b-4 border-rose-100 w-full pb-4">本講座<br><span class="text-lg text-[#D98A59]">（すべて込み）</span></p>
-                    
-                    <div class="py-6 flex-grow text-base font-black text-gray-700 space-y-3 w-full">
-                        <div class="bg-[#FAF0E6] border border-[#EADCCB] p-3 rounded-lg flex items-center justify-center">
-                            <span class="text-red-500 mr-2 text-xl">🎁</span> AのAIアプリ講座<br>(39,800円相当) 込み！
-                        </div>
-                        <div class="bg-[#FAF0E6] border border-[#EADCCB] p-3 rounded-lg flex items-center justify-center">
-                            <span class="text-red-500 mr-2 text-xl">🎁</span> ２ヶ月CANVAラボ<br>(6,000円相当) 込み！
-                        </div>
-                        <p class="text-[#C07049] text-xl pt-2">超豪華なコミコミセット！</p>
-                    </div>
-                    
-                    <div class="pb-6 w-full bg-yellow-50 rounded-xl p-4 border-2 border-yellow-200 mb-6">
-                        <p class="text-red-600 font-bold mb-1 line-through">本来ならもっと高額ですが…</p>
-                        <p class="text-gray-600 font-bold mb-1">特別価格</p>
-                        <p class="text-6xl font-black text-red-600">80,000<span class="text-2xl">円</span></p>
-                    </div>
-                    <label class="w-full bg-rose-100 p-4 rounded-xl cursor-pointer hover:bg-rose-200 border-2 border-[#D98A59] shadow-md">
-                        <input type="radio" name="course_select" value="B" class="course-radio w-6 h-6 text-[#C07049] align-middle" checked>
-                        <span class="font-black text-xl text-rose-700 ml-2 align-middle">Bプランを選択</span>
-                    </label>
-                </div>
-
-                <!-- Cプラン (アップセル) -->
-                <div class="bg-gradient-to-b from-gray-800 to-black rounded-3xl p-8 shadow-xl flex flex-col items-center text-center border-t-8 border-yellow-400 text-white transform md:scale-95 relative h-full">
-                    <div class="absolute -top-5 bg-yellow-500 text-black px-6 py-1 rounded-full font-bold text-sm shadow-md">本気で売るならコレ！</div>
-                    <h3 class="text-3xl font-black text-yellow-400 mb-2 mt-2">＜プラン C＞</h3>
-                    <div class="w-full border-b border-gray-600 pb-4">
-                        <p class="text-sm font-bold text-yellow-400 inline-block px-2">＼もう“作れない”で止まらない／</p>
-                        <p class="text-xl font-black text-white mt-2">販売導線まるごと<br>プロにお任せプラン</p>
-                    </div>
-                    
-                    <div class="py-6 flex-grow text-left w-full space-y-3 text-base font-bold text-gray-200 bg-white/5 p-4 rounded-xl mt-4">
-                        <p class="flex items-center"><span class="text-yellow-400 mr-2">✔</span> 専用LP制作</p>
-                        <p class="flex items-center"><span class="text-yellow-400 mr-2">✔</span> お申し込みフォーム作成</p>
-                        <p class="flex items-center"><span class="text-yellow-400 mr-2">✔</span> 販売導線づくり</p>
-                    </div>
-                    
-                    <div class="pb-6 w-full relative mt-4">
-                        <p class="text-gray-400 text-sm font-bold">👉 通常 <span class="line-through">300,000円</span>のところ</p>
-                        <p class="text-lg text-yellow-400 font-black mt-2 bg-red-600/30 py-1 rounded">👇 講座受講者限定 80％オフ✨</p>
-                        <p class="text-5xl font-black text-yellow-400 mt-2">60,000<span class="text-2xl">円</span></p>
-                    </div>
-                    
-                    <div class="w-full text-left bg-gray-800 p-4 rounded-xl border border-gray-600">
-                        <p class="text-sm text-gray-300 font-bold mb-2">※Cプランは追加オプションです</p>
-                        <label class="block cursor-pointer hover:bg-gray-700 p-2 rounded transition">
-                            <input type="checkbox" id="option_c" name="option_c" value="C" class="w-5 h-5 text-yellow-500 align-middle">
-                            <span class="font-bold text-yellow-400 ml-2 align-middle">Cプランも追加する！</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- お申し込みボタンへスクロール -->
-            <div class="mt-16 text-center">
-                <button onclick="document.getElementById('apply-form-section').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-b from-red-500 to-red-700 text-white px-12 py-6 rounded-full text-3xl font-black shadow-strong btn-pulse border-b-4 border-red-900 inline-block">
-                    選択したプランで申し込む！ ＞
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 申し込みフォーム埋め込みセクション -->
-    <section id="apply-form-section" class="py-24 px-4 bg-white relative">
-        <div class="max-w-3xl mx-auto bg-[#FAF0E6] p-8 md:p-12 rounded-3xl shadow-xl border-4 border-[#EADCCB]">
-            <h2 class="text-3xl font-black text-center mb-8 text-[#C07049] border-b-2 border-[#EADCCB] pb-4">お申し込みフォーム</h2>
-            
-            <form action="form.html" method="GET" class="space-y-6">
-                <!-- プラン確認用（見た目だけ、実際の処理はJSか別ページで） -->
-                <div class="bg-white p-4 rounded-xl border-2 border-rose-100 mb-8">
-                    <p class="text-sm text-gray-500 font-bold mb-1">選択中のプラン</p>
-                    <p id="selected-plan-display" class="text-xl font-black text-[#C07049]">プラン B（本講座）</p>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2">お名前 <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="text" required class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-[#EADCCB] outline-none text-lg bg-white" placeholder="山田 花子">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2">メールアドレス <span class="bg-red-500 text-white text-xs px-2 py-1 rounded ml-2">必須</span></label>
-                    <input type="email" required class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-[#EADCCB] outline-none text-lg bg-white" placeholder="example@email.com">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-3">性別 <span class="bg-gray-400 text-white text-xs px-2 py-1 rounded ml-2">必須</span></label>
-                    <div class="flex space-x-6 bg-white p-4 border-2 border-gray-200 rounded-xl">
-                        <label class="flex items-center cursor-pointer">
-                            <input type="radio" name="gender" value="female" required class="w-6 h-6 text-[#D98A59]">
-                            <span class="ml-2 font-bold text-lg text-gray-700">女性</span>
-                        </label>
-                        <label class="flex items-center cursor-pointer">
-                            <input type="radio" name="gender" value="male" class="w-6 h-6 text-blue-500">
-                            <span class="ml-2 font-bold text-lg text-gray-700">男性</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="pt-8">
-                    <button type="submit" class="w-full bg-gradient-to-b from-[#F3B38A] to-[#E39363] text-white py-6 rounded-full font-black text-2xl shadow-strong hover:scale-105 transition-transform border-b-4 border-rose-900">
-                        今すぐ申し込む！
-                    </button>
-                    <p class="text-center text-sm text-gray-500 font-bold mt-4">※送信後、詳細なご案内メールが届きます。</p>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- 巨大Instagramリンク -->
-    <section class="py-16 px-4 bg-gradient-to-r from-[#E39363] via-[#F3B38A] to-[#EADCCB] text-center">
-        <h2 class="text-3xl md:text-5xl font-black text-white mb-6 drop-shadow-md">最新情報はInstagramで発信中！</h2>
-        <a href="https://instagram.com/mama.mika.mama" target="_blank" class="inline-block bg-white text-[#D98A59] px-12 py-6 rounded-full text-3xl md:text-5xl font-black shadow-2xl hover:scale-110 transition-transform">
-            📷 @mama.mika.mama
-        </a>
-    </section>
-
-    <!-- マネー占い -->
-    <section class="py-16 px-4 bg-white text-center border-t border-gray-200">
-        <h2 class="text-3xl font-black text-gray-800 mb-6">🔮 今日のマネー占い 🔮</h2>
-        <p class="text-lg font-bold text-gray-500 mb-8">アフィリエイトを始める前の運試し！下のコインをタップ！</p>
-        <button onclick="playFortune()" class="bg-yellow-400 text-white text-7xl p-8 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-transform border-4 border-yellow-200">
-            💰
-        </button>
-        <div id="fortuneResult" class="mt-8 text-3xl font-black text-[#C07049] min-h-[50px]"></div>
-        
-        <script>
-            function playFortune() {
-                const results = [
-                    "大吉✨：アフィリエイトで初報酬の予感！いますぐ始めよう！", 
-                    "中吉🌟：良いアイデアが降ってくるかも💡 講座で学ぼう！", 
-                    "小吉🌱：コツコツ作業が実を結ぶ日！焦らず進もう！", 
-                    "超大吉🚀：ビッグチャンス到来！今すぐお申し込みへGO！",
-                    "吉🍀：周りの人に助けられる日。サポート環境を活用しよう！"
-                ];
-                const r = results[Math.floor(Math.random() * results.length)];
-                const resultDiv = document.getElementById("fortuneResult");
-                resultDiv.style.opacity = 0;
-                resultDiv.innerText = "占っています...";
-                resultDiv.style.opacity = 1;
-                setTimeout(() => {
-                    resultDiv.style.transform = "scale(1.1)";
-                    resultDiv.innerText = r;
-                    setTimeout(() => resultDiv.style.transform = "scale(1)", 200);
-                }, 800);
-            }
-        </script>
-    </section>
-
-    
-    <!-- 特商法画像貼り付け -->
-    <section class="py-16 px-4 bg-[#FCF9F2] text-center border-t border-[#EADCCB]">
-        <div class="max-w-2xl mx-auto">
-            <img src="assets/tokushoho_inline.png" alt="特定商取引法に基づく表記" class="w-full h-auto shadow-md rounded-lg">
-        </div>
-    </section>
-
-    <!-- フッター・特商法 -->
-    <footer class="bg-[#FAEDE5] py-12 text-center text-gray-400 text-sm">
-        <div class="space-x-6 mb-8 text-lg font-bold">
-            
-            <span class="text-gray-600">|</span>
-            <a href="privacy.html" class="hover:text-white transition underline">プライバシーポリシー</a>
-        </div>
-        <p class="text-gray-500">&copy; 2026 アフィリエイト講座 All Rights Reserved.</p>
-    </footer>
-
-    <!-- プラン選択のJS連携 -->
+                
+    <!-- JS連携 -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // スクロールアニメーション
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // ヒーロースライドショー
+            const slides = document.querySelectorAll('.hero-slide');
+            if(slides.length > 0) {
+                let current = 0;
+                setInterval(() => {
+                    slides[current].classList.remove('active');
+                    current = (current + 1) % slides.length;
+                    slides[current].classList.add('active');
+                }, 5000);
+            }
+
+            // プラン選択と表示の連動
             const radios = document.querySelectorAll('.course-radio');
             const optionC = document.getElementById('option_c');
             const display = document.getElementById('selected-plan-display');
+            const hiddenCourse = document.getElementById('hidden-course');
+            const hiddenOptionC = document.getElementById('hidden-option-c');
 
             function updateDisplay() {
-                let selectedRadio = document.querySelector('.course-radio:checked').value;
-                let text = selectedRadio === 'A' ? 'プラン A（AIアプリ講座）' : 'プラン B（本講座）';
-                if(optionC.checked) {
+                let selectedRadio = document.querySelector('.course-radio:checked');
+                if(!selectedRadio) return;
+                
+                let val = selectedRadio.value;
+                let text = val === 'A' ? 'プラン A（AIアプリ講座）' : 'プラン B（本講座）';
+                
+                hiddenCourse.value = val;
+                
+                if(optionC && optionC.checked) {
                     text += ' ＋ プラン C（販売導線お任せ）';
+                    hiddenOptionC.value = 'C';
+                } else {
+                    if(hiddenOptionC) hiddenOptionC.value = '';
                 }
-                display.innerText = text;
+                if(display) display.innerText = text;
             }
 
-            radios.forEach(r => r.addEventListener('change', updateDisplay));
-            optionC.addEventListener('change', updateDisplay);
-            
-            // 初回実行
+            if(radios) radios.forEach(r => r.addEventListener('change', updateDisplay));
+            if(optionC) optionC.addEventListener('change', updateDisplay);
             updateDisplay();
+
+            // LP内のフォーム送信処理 (GAS連携)
+            const form = document.getElementById('applyFormInLP');
+            if(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = e.target.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '送信中...';
+                    submitBtn.disabled = true;
+
+                    const formData = new FormData(e.target);
+                    const GAS_URL = 'https://script.google.com/macros/s/AKfycbz_f70YjzPPT9yxPwMFE_vIagMcNrHNOkyXmGE97hrn92fzjHPGhuHs0hi5WgZReXHc/exec';
+
+                    fetch(GAS_URL, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors'
+                    })
+                    .then(() => {
+                        alert('【お申し込み完了】\nありがとうございます！\nご入力いただいたメールアドレス宛に、担当者より折り返しご連絡いたします。');
+                        e.target.reset();
+                        updateDisplay();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert('通信エラーが発生しました。時間を置いて再度お試しください。');
+                    })
+                    .finally(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
+                });
+            }
         });
     </script>
 </body>
+
 </html>
