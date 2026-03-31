@@ -24,13 +24,13 @@
             <!-- お名前 -->
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">お名前 <span class="text-xs bg-red-100 text-red-500 px-2 py-0.5 rounded-sm ml-1">必須</span></label>
-                <input type="text" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" name="name" placeholder="山田 花子">
+                <input type="text" name="name" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" name="name" placeholder="山田 花子">
             </div>
 
             <!-- メールアドレス -->
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">メールアドレス <span class="text-xs bg-red-100 text-red-500 px-2 py-0.5 rounded-sm ml-1">必須</span></label>
-                <input type="email" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" name="email" placeholder="example@email.com">
+                <input type="email" name="email" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" name="email" placeholder="example@email.com">
             </div>
 
             <!-- 性別 -->
@@ -106,14 +106,9 @@
             const formData = new FormData(e.target);
             
             // ⚠️ここに後でGASのURLを入れます
-            const GAS_URL = 'YOUR_GAS_URL_HERE'; 
+            const GAS_URL = 'https://script.google.com/macros/s/AKfycbz_f70YjzPPT9yxPwMFE_vIagMcNrHNOkyXmGE97hrn92fzjHPGhuHs0hi5WgZReXHc/exec'; 
 
-            if (GAS_URL === 'YOUR_GAS_URL_HERE') {
-                alert('【テスト送信】\n※まだ裏側の設定が終わっていません！\n設定が完了すると、美香ちゃんのメールアドレスに直接通知が飛びます🚀');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                return;
-            }
+            
 
             fetch(GAS_URL, {
                 method: 'POST',
