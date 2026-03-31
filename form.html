@@ -24,13 +24,13 @@
             <!-- お名前 -->
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">お名前 <span class="text-xs bg-red-100 text-red-500 px-2 py-0.5 rounded-sm ml-1">必須</span></label>
-                <input type="text" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" placeholder="山田 花子">
+                <input type="text" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" name="name" placeholder="山田 花子">
             </div>
 
             <!-- メールアドレス -->
             <div>
                 <label class="block text-sm font-bold text-gray-700 mb-2">メールアドレス <span class="text-xs bg-red-100 text-red-500 px-2 py-0.5 rounded-sm ml-1">必須</span></label>
-                <input type="email" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" placeholder="example@email.com">
+                <input type="email" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" name="email" placeholder="example@email.com">
             </div>
 
             <!-- 性別 -->
@@ -93,13 +93,50 @@
 </form>
     </div>
 
+    
     <script>
         document.getElementById('applyForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // サンプルとしての動作
-            alert('【テスト送信】\n\nご入力ありがとうございます。\n※これはサンプル画面のため実際の送信は行われません。\n「OK」を押すとトップページに戻ります。');
-            window.location.href = 'index.html';
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '送信中...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(e.target);
+            
+            // ⚠️ここに後でGASのURLを入れます
+            const GAS_URL = 'YOUR_GAS_URL_HERE'; 
+
+            if (GAS_URL === 'YOUR_GAS_URL_HERE') {
+                alert('【テスト送信】\n※まだ裏側の設定が終わっていません！\n設定が完了すると、美香ちゃんのメールアドレスに直接通知が飛びます🚀');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            fetch(GAS_URL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.result === 'success'){
+                    alert('【送信完了】\nお申し込みありがとうございます！\n担当者より折り返しご連絡いたします。');
+                    window.location.href = 'index.html'; // トップに戻る
+                } else {
+                    alert('エラーが発生しました。');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                alert('通信エラーが発生しました。');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
         });
     </script>
+
 </body>
 </html>
