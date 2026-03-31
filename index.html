@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI×Instagramで収益化 | 徹底サポート講座</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=BIZ+UDPMincho:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { 
-            font-family: 'Noto Sans JP', sans-serif; 
-            background-color: #F9F8F6; /* シャンパンベージュ系 */
-            color: #4A4A4A; 
+            font-family: 'BIZ UDPGothic', sans-serif; 
+            background-color: #F9F8F6; 
+            color: #333333 !important; /* 背景に溶け込まないチャコールグレー */
             overflow-x: hidden; 
             letter-spacing: 0.05em;
-            line-height: 1.8;
+            line-height: 1.9 !important; /* 行間 1.9倍（ゆったり） */
+            font-size: 110%; /* 全体的に1.1〜1.2倍大きく */
         }
         h1, h2, h3, h4, h5, .font-serif { 
-            font-family: 'Noto Serif JP', serif; 
-            color: #2C3E50; /* ミッドナイトネイビー */
+            font-family: 'BIZ UDPMincho', serif !important; 
+            color: #3E2A23 !important; /* 深みのあるダークブラウン */
             letter-spacing: 0.1em;
+            line-height: 1.5;
         }
         
         .hero-video-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -2; }
@@ -27,38 +29,50 @@
 
         .border-greige { border-color: #E5E0D8; }
         .bg-greige { background-color: #E5E0D8; }
-        .text-navy { color: #2C3E50; }
-        .bg-navy { background-color: #2C3E50; }
+        .text-navy { color: #3E2A23 !important; } /* ネイビー指定だったものをダークブラウンに書き換え */
+        .bg-navy { background-color: #3E2A23 !important; border-color: #3E2A23 !important; }
         .text-dusty { color: #C49A9A; }
         
+        /* Tailwindのグレー系テキストをチャコールグレーに強制上書き（視認性向上） */
+        .text-gray-400, .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 {
+            color: #333333 !important;
+        }
+        .text-white { color: #ffffff !important; }
+        
+        /* 読みやすさ重視のため、Tailwindの基本サイズクラスを強制引き上げ */
+        .text-xs { font-size: 0.95rem !important; }
+        .text-sm { font-size: 1.05rem !important; }
+        .text-base { font-size: 1.15rem !important; }
+        
         .btn-elegant { 
-            background-color: #2C3E50; 
-            color: #ffffff; 
+            background-color: #3E2A23; 
+            color: #ffffff !important; 
             transition: all 0.4s ease; 
-            border: 1px solid #2C3E50;
+            border: 1px solid #3E2A23;
         }
         .btn-elegant:hover { 
             background-color: #F9F8F6; 
-            color: #2C3E50; 
+            color: #3E2A23 !important; 
         }
 
         .btn-ghost {
             background-color: transparent;
-            border: 1px solid #2C3E50;
-            color: #2C3E50;
+            border: 1px solid #3E2A23;
+            color: #3E2A23 !important;
             transition: all 0.4s ease;
         }
         .btn-ghost:hover {
-            background-color: #2C3E50;
-            color: #ffffff;
+            background-color: #3E2A23;
+            color: #ffffff !important;
         }
 
         .section-title { 
-            font-size: 1.75rem; 
-            font-weight: 500; 
+            font-size: 1.85rem; 
+            font-weight: 700; 
             text-align: center; 
             margin-bottom: 3rem;
             position: relative;
+            color: #3E2A23 !important;
         }
         .section-title::after {
             content: '';
@@ -77,7 +91,6 @@
             padding-bottom: 2px;
         }
         
-        /* フォームの入力欄を上品に */
         .input-elegant {
             background-color: #ffffff;
             border: 1px solid #E5E0D8;
@@ -85,11 +98,12 @@
             padding: 1rem;
             width: 100%;
             transition: border-color 0.3s ease;
-            font-family: 'Noto Sans JP', sans-serif;
+            font-family: 'BIZ UDPGothic', sans-serif;
+            color: #333333;
         }
         .input-elegant:focus {
             outline: none;
-            border-color: #2C3E50;
+            border-color: #3E2A23;
         }
     </style>
 </head>
@@ -174,7 +188,7 @@
                     <h3 class="text-sm font-sans text-dusty mb-2 tracking-widest">マネーアドバイザー</h3>
                     <h4 class="text-xl font-serif text-navy mb-4">美香</h4>
                     <div class="w-8 h-[1px] bg-[#E5E0D8] mx-auto mb-4"></div>
-                    <p class="text-sm text-gray-600 font-light leading-loose text-left">スマホひとつで収益化が叶う未来を日々お伝えしています。</p>
+                    <p class="text-sm text-gray-600 font-light leading-loose text-left">スマホひとつで収益化が叶う未来を日々ご提案しています。<br>おウチにいながら収入を増やしていくためのノウハウとマインドを丁寧にお伝えします。</p>
                 </div>
                 <!-- 講師2 -->
                 <div class="bg-white p-8 text-center border border-[#E5E0D8] rounded-sm">
