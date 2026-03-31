@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+const fs = require('fs');
+
+const indexPath = '/home/hiramekiya/clawd/collective-panda/mika-lp-2/index.html';
+const html = `<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -562,7 +565,7 @@
 
                     fetch(GAS_URL, { method: 'POST', body: formData, mode: 'no-cors' })
                     .then(() => {
-                        alert('【お申し込み完了】\nご入力いただいたメールアドレス宛に、担当者より折り返しご連絡いたします。');
+                        alert('【お申し込み完了】\\nご入力いただいたメールアドレス宛に、担当者より折り返しご連絡いたします。');
                         e.target.reset();
                         updateDisplay();
                     })
@@ -579,4 +582,6 @@
         });
     </script>
 </body>
-</html>
+</html>`;
+fs.writeFileSync(indexPath, html);
+console.log('Complete elegant redesign applied.');
