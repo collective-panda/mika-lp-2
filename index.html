@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI×Instagramで収益化 | 徹底サポート講座</title>
+    <title>AI×Instagramで収益化 | <span class="inline-block">徹底サポート講座</span></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=BIZ+UDPMincho:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -112,7 +112,7 @@
     <!-- ヒーローセクション -->
     <header class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
         <div class="hero-video-wrapper">
-            <video autoplay loop muted playsinline>
+            <video id="bg-video" autoplay loop muted playsinline webkit-playsinline>
                 <source src="assets/hero_bg.mp4" type="video/mp4">
             </video>
         </div>
@@ -122,8 +122,8 @@
         <div class="relative z-10 w-full max-w-4xl mt-12 px-6 py-12 flex flex-col items-center" style="background: radial-gradient(circle at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0) 70%);">
             <p class="font-serif text-navy text-lg md:text-xl mb-4 tracking-widest" style="text-shadow: 0 0 10px #fff, 0 0 20px #fff;">手厚く丁寧に</p>
             <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl text-navy mb-8 leading-[1.4] font-medium" style="text-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff;">
-                AI×インスタで収益化<br>
-                商品づくりから販売まで<br>
+                <span class="inline-block">AI×インスタで収益化</span><br>
+                <span class="inline-block">商品づくりから販売まで</span><br>
                 徹底サポート講座
             </h1>
             <p class="text-base md:text-lg font-bold text-gray-800 mb-6 tracking-widest elegant-underline inline-block" style="text-shadow: 0 0 10px #fff, 0 0 20px #fff;">
@@ -526,6 +526,20 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // iOS自動再生（省電力モード時など）の対策
+            const bgVideo = document.getElementById('bg-video');
+            if (bgVideo) {
+                bgVideo.muted = true;
+                bgVideo.play().catch(err => {
+                    console.log("Autoplay blocked (likely iOS Low Power Mode).");
+                    // 画面のどこかをタップしたら再生を開始させる
+                    document.body.addEventListener('touchstart', () => {
+                        bgVideo.play();
+                    }, { once: true });
+                });
+            }
+
             // Fade up animation
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
