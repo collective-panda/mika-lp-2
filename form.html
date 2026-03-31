@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お申し込み | アフィリエイト講座</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #fffafb; color: #4a4a4a; }
+        .card-shadow { box-shadow: 0 4px 20px rgba(217, 119, 127, 0.1); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col items-center justify-center p-4 py-10">
+
+    <div class="w-full max-w-lg bg-white p-8 md:p-12 rounded-2xl card-shadow border border-pink-100 relative overflow-hidden">
+        <!-- 上部の装飾バー -->
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-300 via-pink-400 to-pink-300"></div>
+        
+        <h1 class="text-2xl md:text-3xl font-black text-pink-600 mb-2 text-center tracking-wide">お申し込みフォーム</h1>
+        <p class="text-sm text-gray-500 text-center mb-8 border-b pb-4">必要事項をご入力のうえ、「確認画面へ」ボタンを押してください。</p>
+        
+        <form id="applyForm" class="space-y-6">
+            <!-- お名前 -->
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">お名前 <span class="text-xs bg-red-100 text-red-500 px-2 py-0.5 rounded-sm ml-1">必須</span></label>
+                <input type="text" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" placeholder="山田 花子">
+            </div>
+
+            <!-- メールアドレス -->
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-2">メールアドレス <span class="text-xs bg-red-100 text-red-500 px-2 py-0.5 rounded-sm ml-1">必須</span></label>
+                <input type="email" required class="w-full p-4 border border-gray-200 rounded-xl focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none transition bg-gray-50 focus:bg-white" placeholder="example@email.com">
+            </div>
+
+            <!-- 性別 -->
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-3">性別 <span class="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-sm ml-1">任意</span></label>
+                <div class="flex space-x-6">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="gender" value="female" class="w-5 h-5 text-pink-500 border-gray-300 focus:ring-pink-400">
+                        <span class="ml-2 text-gray-700 font-medium">女性</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="gender" value="male" class="w-5 h-5 text-blue-500 border-gray-300 focus:ring-blue-400">
+                        <span class="ml-2 text-gray-700 font-medium">男性</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="gender" value="other" class="w-5 h-5 text-gray-500 border-gray-300 focus:ring-gray-400">
+                        <span class="ml-2 text-gray-700 font-medium">その他</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="pt-8">
+                <button type="submit" class="w-full bg-gradient-to-r from-pink-400 to-[#d9777f] text-white py-5 rounded-full font-bold text-xl shadow-lg hover:scale-105 transition-transform">
+                    確認画面へ進む
+                </button>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="index.html" class="text-sm text-pink-400 hover:text-pink-600 transition border-b border-pink-200 pb-1">← LPページに戻る</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('applyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // サンプルとしての動作
+            alert('【テスト送信】\n\nご入力ありがとうございます。\n※これはサンプル画面のため実際の送信は行われません。\n「OK」を押すとトップページに戻ります。');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

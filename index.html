@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おウチにいながらアフィリエイトで収入と自由を手にしてみませんか</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #fffafb; color: #4a4a4a; }
+        .hero-bg {
+            background-image: url('images/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            background-blend-mode: overlay;
+        }
+        .section-title { color: #d9777f; border-bottom: 3px solid #fecdd3; padding-bottom: 8px; margin-bottom: 32px; display: inline-block; }
+        .card-shadow { box-shadow: 0 4px 20px rgba(217, 119, 127, 0.1); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ヒーローセクション -->
+    <header class="hero-bg min-h-[80vh] flex flex-col items-center justify-center text-center px-4 relative">
+        <div class="bg-white/90 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-xl max-w-4xl w-full border border-pink-100">
+            <h1 class="text-3xl md:text-5xl font-black leading-tight mb-6 text-gray-800">
+                おウチにいながら<br class="md:hidden">
+                <span class="text-[#d9777f]">アフィリエイトで収入と<br class="md:hidden">自由を手にしてみませんか</span>
+            </h1>
+            <p class="text-lg md:text-2xl font-bold text-gray-600 mb-8 tracking-wide">
+                あなたの個性を咲かせる講座<br>
+                あなたビジネスを咲かせる講座
+            </p>
+            <a href="#products" class="bg-gradient-to-r from-pink-400 to-[#d9777f] text-white px-10 py-5 rounded-full text-xl font-bold shadow-lg hover:scale-105 transition-transform inline-block">
+                講座の詳細を見る 👇
+            </a>
+        </div>
+    </header>
+
+    <!-- こんな方にオススメ -->
+    <section class="py-20 px-4 bg-pink-50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-center section-title w-full">こんな方にオススメ</h2>
+            <div class="bg-white p-8 rounded-2xl card-shadow">
+                <ul class="space-y-4 text-lg md:text-xl text-gray-700 font-medium">
+                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> 一人じゃ不安、誰かに頼りたい</li>
+                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> 自己流で結果が出なかった</li>
+                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> これで合ってるか不安</li>
+                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> 難しいのは苦手だけど稼ぎたい</li>
+                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> 相談しながら安心して進めたい</li>
+                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> Instagram収益化までの導線がわからない</li>
+                    <li class="flex items-start"><span class="text-pink-500 mr-3 text-2xl">✅</span> もう「わからない」で止まりたくない</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 講師紹介 -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl font-bold section-title">講師紹介</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mt-8">
+                <!-- 講師1〜6ループ -->
+                <script>
+                    for(let i=1; i<=6; i++) {
+                        document.write(`
+                            <div class="bg-pink-50 rounded-xl p-6 card-shadow border border-pink-100">
+                                <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center text-gray-400 font-bold border-4 border-white shadow-sm">写真枠 ${i}</div>
+                                <h3 class="text-xl font-bold mb-2 text-gray-800">講師のお名前 ${i}</h3>
+                                <p class="text-sm text-gray-600">簡単なプロフィール文がここに入ります。経歴や実績などを記載予定です。</p>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- 講座の詳細 -->
+    <section class="py-20 px-4 bg-gradient-to-b from-pink-50 to-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center section-title w-full">講座の詳細</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- 内容 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border-t-4 border-pink-400">
+                    <h3 class="text-2xl font-bold text-pink-500 mb-6 text-center border-b pb-2">＜内容＞</h3>
+                    <ul class="space-y-3 text-gray-700 font-medium">
+                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">アフェリエイトの種類と仕組み</li>
+                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">アフェリエイト取得方法</li>
+                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">InstagramやAIの基本的な使い方</li>
+                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">おウチで販売できるものを作ろう</li>
+                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">作業会グループあり</li>
+                        <li class="pl-4 relative before:content-[''] before:w-2 before:h-2 before:bg-pink-400 before:rounded-full before:absolute before:left-0 before:top-2">個別コンサルあり</li>
+                    </ul>
+                </div>
+
+                <!-- 日程 -->
+                <div class="bg-white p-8 rounded-2xl card-shadow border-t-4 border-pink-400">
+                    <h3 class="text-2xl font-bold text-pink-500 mb-6 text-center border-b pb-2">＜日程＞</h3>
+                    <div class="grid grid-cols-2 gap-2 text-gray-700 font-bold text-lg mb-6">
+                        <div>４月１７日</div><div>４月１９日</div>
+                        <div>４月２５日</div><div>４月３０日</div>
+                        <div>５月　８日</div><div>５月１２日</div>
+                        <div>５月１７日</div><div>５月２２日</div>
+                        <div>５月３１日</div><div>６月　９日</div>
+                        <div>６月１５日</div><div>６月２１日</div>
+                    </div>
+                    <div class="bg-pink-50 p-4 rounded-lg text-sm text-gray-600 font-medium space-y-1 border border-pink-100">
+                        <p>※アーカイブあり　PM９：００スタート</p>
+                        <p>※個別作業会は日中でも対応可能</p>
+                        <p>※オンライン上でのマルシェ出店あり</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5つの特典 -->
+            <div class="mt-12 bg-[#ffe4e6] p-8 rounded-3xl card-shadow border-4 border-white">
+                <h3 class="text-2xl md:text-3xl font-black text-pink-600 mb-8 text-center bg-white py-3 rounded-full shadow-sm">🎁 手厚い５つの特典 🎁</h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
+                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">①</div>
+                        <p class="font-bold text-gray-700">CANVA２ヶ月間<br>質問や指導受け放題 / ちままラボへご招待</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
+                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">②</div>
+                        <p class="font-bold text-gray-700">個別カウセリング<br>あなたが売れる商品を一緒に考え一緒に作る</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
+                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">③</div>
+                        <p class="font-bold text-gray-700">すぐに売れる<br>販売導線ＬＰやお申し込みツール制作 ８０％off</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
+                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">④</div>
+                        <p class="font-bold text-gray-700">インフルエンサーによる写真や投稿に必要なおはなしを無料で聞ける</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl flex items-center shadow-sm">
+                        <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center font-black text-xl shrink-0 mr-4">⑤</div>
+                        <p class="font-bold text-gray-700">講座中３ヶ月間<br>個別LINEにて質問し放題</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold section-title">お客様の声</h2>
+            <div class="grid grid-cols-2 gap-4 md:gap-6 mt-8">
+                <!-- 13枚の画像枠ループ -->
+                <script>
+                    for(let i=1; i<=13; i++) {
+                        document.write(`
+                            <div class="bg-gray-100 h-40 md:h-64 rounded-xl flex items-center justify-center text-gray-400 font-bold border-2 border-dashed border-gray-300">
+                                お客様の声<br>写真枠 ${i}
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商品内容３種 -->
+    <section id="products" class="py-24 px-4 bg-pink-50 relative">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-black text-center mb-16 text-gray-800 w-full tracking-wide">商品プランのご案内</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Aプラン -->
+                <div class="bg-white rounded-3xl p-8 card-shadow flex flex-col items-center text-center border-t-8 border-gray-300">
+                    <h3 class="text-3xl font-black text-gray-700 mb-2">＜A＞</h3>
+                    <p class="text-xl font-bold text-gray-600 h-20 flex items-center justify-center border-b w-full pb-4">８つのAIアプリ入門講座</p>
+                    <div class="py-8 flex-grow">
+                        <p class="text-gray-500 mb-2">単品価格</p>
+                        <p class="text-4xl font-black text-gray-800">39,800<span class="text-xl">円</span></p>
+                    </div>
+                    <a href="form.html" class="w-full py-4 bg-gray-200 text-gray-700 font-bold rounded-full hover:bg-gray-300 transition">申し込む</a>
+                </div>
+
+                <!-- Bプラン -->
+                <div class="bg-white rounded-3xl p-8 card-shadow flex flex-col items-center text-center border-t-8 border-pink-400 transform md:-translate-y-4 relative">
+                    <div class="absolute -top-5 bg-pink-500 text-white px-6 py-2 rounded-full font-bold text-sm tracking-widest shadow-md">一番人気</div>
+                    <h3 class="text-3xl font-black text-pink-600 mb-2">＜B＞</h3>
+                    <p class="text-xl font-bold text-pink-600 h-20 flex items-center justify-center border-b w-full pb-4 border-pink-100">本講座（すべて込み）</p>
+                    <div class="py-6 flex-grow text-sm font-medium text-gray-600 space-y-2">
+                        <p class="text-pink-500 font-bold bg-pink-50 py-1 rounded">AのAIアプリ講座<br>（39,800円）</p>
+                        <p class="text-pink-500 font-bold bg-pink-50 py-1 rounded">２ヶ月CANVAラボ<br>（6,000円）</p>
+                        <p class="pt-2">もコミコミのお得なセット！</p>
+                    </div>
+                    <div class="pb-6">
+                        <p class="text-gray-500 mb-1">特別価格</p>
+                        <p class="text-5xl font-black text-pink-500">80,000<span class="text-2xl">円</span></p>
+                    </div>
+                    <a href="form.html" class="w-full py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white font-bold rounded-full hover:scale-105 transition shadow-lg text-lg">申し込む</a>
+                </div>
+
+                <!-- Cプラン -->
+                <div class="bg-gradient-to-b from-gray-900 to-gray-800 rounded-3xl p-8 card-shadow flex flex-col items-center text-center border-t-8 border-yellow-400 text-white">
+                    <h3 class="text-3xl font-black text-yellow-400 mb-2">＜C＞</h3>
+                    <p class="text-sm font-bold text-gray-300 border-b border-gray-700 w-full pb-4">
+                        ＼もう“作れない”で止まらない／<br>
+                        <span class="text-lg text-white mt-1 block">販売導線まるごと<br>プロにお任せプラン</span>
+                    </p>
+                    <div class="py-6 flex-grow text-left w-full space-y-2 text-sm text-gray-300">
+                        <p>✔ 専用LP制作</p>
+                        <p>✔ お申し込みフォーム作成</p>
+                        <p>✔ 販売導線づくり</p>
+                    </div>
+                    <div class="pb-6 w-full relative">
+                        <p class="text-gray-400 text-sm line-through">👉 通常 300,000円のところ</p>
+                        <p class="text-xs text-yellow-400 font-bold mt-2">👇 講座受講者限定８０％オフ✨</p>
+                        <p class="text-5xl font-black text-yellow-400 mt-1">60,000<span class="text-2xl">円</span></p>
+                    </div>
+                    <a href="form.html" class="w-full py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 text-gray-900 font-black rounded-full hover:scale-105 transition shadow-lg text-lg">特別価格で申し込む</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- マネー占いミニゲーム -->
+    <section class="py-16 px-4 bg-white text-center border-t border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-700 mb-6">🔮 今日のマネー占い 🔮</h2>
+        <p class="text-sm text-gray-500 mb-6">アフィリエイトを始める前の運試し！コインをタップしてね。</p>
+        <button onclick="playFortune()" class="bg-yellow-400 text-white text-5xl p-6 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-transform border-4 border-yellow-200">
+            💰
+        </button>
+        <div id="fortuneResult" class="mt-8 text-2xl font-black text-pink-600 min-h-[40px]"></div>
+        
+        <script>
+            function playFortune() {
+                const results = [
+                    "大吉✨：アフィリエイトで初報酬の予感！いますぐ始めよう！", 
+                    "中吉🌟：良いアイデアが降ってくるかも💡 講座で学ぼう！", 
+                    "小吉🌱：コツコツ作業が実を結ぶ日！焦らず進もう！", 
+                    "超大吉🚀：ビッグチャンス到来！今すぐお申し込みへGO！",
+                    "吉🍀：周りの人に助けられる日。サポート環境を活用しよう！"
+                ];
+                const r = results[Math.floor(Math.random() * results.length)];
+                
+                const resultDiv = document.getElementById("fortuneResult");
+                resultDiv.style.opacity = 0;
+                resultDiv.innerText = "占っています...";
+                resultDiv.style.opacity = 1;
+                
+                setTimeout(() => {
+                    resultDiv.style.transform = "scale(1.1)";
+                    resultDiv.innerText = r;
+                    setTimeout(() => resultDiv.style.transform = "scale(1)", 200);
+                }, 800);
+            }
+        </script>
+    </section>
+
+    <!-- フッター・特商法 -->
+    <footer class="bg-gray-100 py-10 text-center text-gray-500 text-sm">
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://instagram.com/mama.mika.mama" target="_blank" class="font-bold text-pink-500 hover:underline flex items-center">
+                <span class="mr-1">📷</span> Instagram: @mama.mika.mama
+            </a>
+        </div>
+        <div class="space-x-4 mb-6">
+            <a href="#" class="hover:underline">特定商取引法に基づく表記</a>
+            <a href="#" class="hover:underline">プライバシーポリシー</a>
+        </div>
+        <p>&copy; 2026 アフィリエイト講座 All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
