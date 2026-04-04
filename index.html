@@ -373,7 +373,7 @@
 
 
                     <label class="w-full mt-auto bg-[#F7F5F0] p-4 cursor-pointer hover:bg-[#E5E0D8] transition border border-[#E5E0D8]">
-                        <input type="radio" name="course_select" value="A" class="course-radio w-4 h-4 text-navy align-middle">
+                        <input type="checkbox" name="course_a" id="course_a" value="A" class="course-checkbox w-4 h-4 text-navy align-middle">
                         <span class="font-serif text-sm text-navy ml-2 align-middle tracking-widest">Aプランを選択</span>
                     </label>
                 </div>
@@ -399,7 +399,7 @@
                         <p class="font-serif text-3xl text-white">80,000<span class="text-sm ml-1">円</span></p>
                     </div>
                     <label class="w-full mt-auto bg-white p-4 cursor-pointer hover:bg-gray-100 transition text-navy">
-                        <input type="radio" name="course_select" value="B" class="course-radio w-4 h-4 align-middle" checked>
+                        <input type="checkbox" name="course_b" id="course_b" value="B" class="course-checkbox w-4 h-4 align-middle" checked>
                         <span class="font-serif text-sm ml-2 align-middle tracking-widest font-bold">Bプランを選択</span>
                     </label>
                 </div>
@@ -420,12 +420,12 @@
                     <div class="pb-6 w-full relative">
                         <p class="text-xs text-gray-400 line-through mb-1">通常 300,000円</p>
                         <p class="font-serif text-2xl text-navy">60,000<span class="text-sm ml-1">円</span></p>
-                        <p class="text-xs text-dusty mt-1">※受講生限定特別価格</p>
+                        <p class="text-xs text-dusty mt-1">※早期特別価格</p>
                     </div>
                     
                     <div class="w-full text-left bg-[#F7F5F0] p-4 border border-[#E5E0D8] mt-auto">
                         <label class="block cursor-pointer">
-                            <input type="checkbox" id="option_c" name="option_c" value="C" class="w-4 h-4 text-navy align-middle">
+                            <input type="checkbox" id="option_c" name="option_c" value="C" class="course-checkbox w-4 h-4 text-navy align-middle">
                             <span class="font-serif text-sm text-navy ml-2 align-middle tracking-widest">Cプランも追加する</span>
                         </label>
                     </div>
@@ -488,6 +488,16 @@
             <span class="mt-1">@mama.mika.mama</span>
         </a>
     </section>
+
+    <!-- お問い合わせ -->
+    <section class="py-24 px-4 bg-white text-center border-t border-[#E5E0D8]">
+        <p class="font-serif text-xl text-navy mb-8 tracking-widest">お問い合わせ</p>
+        <p class="text-sm md:text-base text-gray-700 font-light mb-6">講座やプランに関するご不明な点は、<br class="md:hidden">下記メールアドレスまでお気軽にご連絡ください。</p>
+        <a href="mailto:okaidoku.happy@gmail.com" class="text-lg md:text-xl font-serif text-dusty border-b border-dusty pb-1 hover:text-navy hover:border-navy transition-colors">
+            okaidoku.happy@gmail.com
+        </a>
+    </section>
+
 
     <!-- マネー占い (Elegant) -->
     <section class="py-24 px-4 bg-[#F7F5F0] text-center border-t border-[#E5E0D8]">
@@ -566,33 +576,45 @@
             document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
             // Plan display
-            const radios = document.querySelectorAll('.course-radio');
-            const optionC = document.getElementById('option_c');
+            
+            const checkboxes = document.querySelectorAll('.course-checkbox');
             const display = document.getElementById('selected-plan-display');
             const hiddenCourse = document.getElementById('hidden-course');
             const hiddenOptionC = document.getElementById('hidden-option-c');
 
             function updateDisplay() {
-                let selectedRadio = document.querySelector('.course-radio:checked');
-                if(!selectedRadio) return;
+                let selectedTexts = [];
+                let courseValue = '';
+                let optionCValue = '';
                 
-                let val = selectedRadio.value;
-                let text = val === 'A' ? 'プラン A（AIアプリ講座）' : 'プラン B（本講座）';
-                
-                if (hiddenCourse) hiddenCourse.value = val;
-                
-                if(optionC && optionC.checked) {
-                    text += ' ＋ プラン C（販売導線お任せ）';
-                    if(hiddenOptionC) hiddenOptionC.value = 'C';
-                } else {
-                    if(hiddenOptionC) hiddenOptionC.value = '';
+                const courseA = document.getElementById('course_a');
+                const courseB = document.getElementById('course_b');
+                const optionC = document.getElementById('option_c');
+
+                if(courseA && courseA.checked) {
+                    selectedTexts.push('プラン A（AIアプリ講座）');
+                    courseValue += 'A ';
                 }
-                if(display) display.innerText = text;
+                if(courseB && courseB.checked) {
+                    selectedTexts.push('プラン B（本講座）');
+                    courseValue += 'B ';
+                }
+                if(optionC && optionC.checked) {
+                    selectedTexts.push('プラン C（販売導線お任せ）');
+                    optionCValue = 'C';
+                }
+
+                if (hiddenCourse) hiddenCourse.value = courseValue.trim() || '未選択';
+                if (hiddenOptionC) hiddenOptionC.value = optionCValue;
+                
+                if (display) {
+                    display.innerText = selectedTexts.length > 0 ? selectedTexts.join(' ＋ ') : 'プランを選択してください';
+                }
             }
 
-            if(radios) radios.forEach(r => r.addEventListener('change', updateDisplay));
-            if(optionC) optionC.addEventListener('change', updateDisplay);
+            if(checkboxes) checkboxes.forEach(c => c.addEventListener('change', updateDisplay));
             updateDisplay();
+
 
             // Form submit
             const form = document.getElementById('applyFormInLP');
